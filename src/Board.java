@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Board extends JComponent {
+public class Board extends JPanel {
     private int startX = 60;
     private int startY = 60;
 
