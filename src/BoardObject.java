@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class BoardObject extends JComponent {
-    private int x;
-    private int y;
+public class BoardObject {
 
-    private Type type = Type.SPELER;
+    private JLabel label;
+
+    private Point position;
+
+    private Type type;
 
     private enum Type{
         SPELER,
@@ -14,53 +16,30 @@ public class BoardObject extends JComponent {
         SLEUTEL
     }
     public BoardObject(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-    
-    public BoardObject(int x, int y, Type type){
-        this.x = x;
-        this.y = y;
-        this.type = type;
-    }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public void setY(int y){
-        this.y = y;
-    }
-
-    public int getX(){
-        return x;
-    }
-
-    public int getY(){
-        return y;
+        this.position = new Point(x,y);
     }
 
     public void setType(Type type){
         this.type = type;
     }
 
+    public void setPosition(int x, int y){
+        this.position = new Point(x,y);
+    }
+
     public Type getType(){
         return this.type;
     }
 
-    @Override
-    public void paintComponent(Graphics g){
-        switch (type){
-            case MUUR:
+    public Point getPosition(){
+        return this.position;
+    }
 
-                break;
-            case SPELER:
-                g.drawOval(60,60,40,40);
-                break;
-            case SLEUTEL:
-                break;
-            case BARRICADE:
-                break;
-        }
+    public JLabel getLabel(){
+         return this.label;
+    }
+
+    public void setLabel(JLabel label){
+        this.label = label;
     }
 }

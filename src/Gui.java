@@ -8,11 +8,12 @@ public class Gui extends JFrame implements KeyListener{
     private Board myBoard = new Board();
     Gui(){
         setTitle("Game | Groep M");
-        setSize(575,600);
+        setSize(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(myBoard);
+        myBoard.updateHomePanel();
 
+        add(myBoard);
         setVisible(true);
     }
 
@@ -20,16 +21,22 @@ public class Gui extends JFrame implements KeyListener{
         int keyCode = e.getKeyCode();
         switch (keyCode){
             case KeyEvent.VK_W: case KeyEvent.VK_UP:
-                myBoard.movePlayer('y',-50);
+                myBoard.movePlayer('x',-1);
                 break;
             case KeyEvent.VK_S: case KeyEvent.VK_DOWN:
-                myBoard.movePlayer('y', 50);
+                myBoard.movePlayer('x', 1);
                 break;
             case KeyEvent.VK_A: case KeyEvent.VK_LEFT:
-                myBoard.movePlayer('x', -50);
+                myBoard.movePlayer('y', -1);
                 break;
             case KeyEvent.VK_D: case KeyEvent.VK_RIGHT:
-                myBoard.movePlayer('x', 50);
+                myBoard.movePlayer('y', 1);
+                break;
+            case KeyEvent.VK_ESCAPE:
+                System.exit(0);
+                break;
+            case KeyEvent.VK_R:
+                myBoard.restartLevel();
                 break;
         }
     }
