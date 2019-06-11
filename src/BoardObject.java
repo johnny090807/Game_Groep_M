@@ -9,7 +9,7 @@ public class BoardObject {
 
     private Type type;
 
-    private enum Type{
+    public enum Type{
         SPELER,
         BARRICADE,
         MUUR,
