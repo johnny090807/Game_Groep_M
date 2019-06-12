@@ -28,6 +28,12 @@ public class Level {
 //
                 this.muren.add(new Muur(0,1));
                 this.muren.add(new Muur(1,1));
+                this.muren.add(new Muur(2,1));
+                this.muren.add(new Muur(3,1));
+                this.muren.add(new Muur(4,1));
+                this.muren.add(new Muur(5,1));
+                this.muren.add(new Muur(6,1));
+                this.muren.add(new Muur(7,1));
 
                 this.barricades.add(new Barricade(4,4,100));
         }

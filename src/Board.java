@@ -64,6 +64,8 @@ public class Board extends JPanel {
 
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
 
+        squares[this.level.eindZone.getPosition().x][this.level.eindZone.getPosition().y].setBoardObject(new Einde(this.level.eindZone.getPosition().x,this.level.eindZone.getPosition().y));
+
         updateGamePanel();
     }
     public void beweegSpeler(char direction, int howMuch){
