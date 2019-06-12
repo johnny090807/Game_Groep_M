@@ -22,22 +22,22 @@ public class Gui extends JFrame implements KeyListener{
         int keyCode = e.getKeyCode();
         switch (keyCode){
             case KeyEvent.VK_W: case KeyEvent.VK_UP:
-                myBoard.movePlayer('x',-1);
+                myBoard.beweegSpeler('x',-1);
                 break;
             case KeyEvent.VK_S: case KeyEvent.VK_DOWN:
-                myBoard.movePlayer('x', 1);
+                myBoard.beweegSpeler('x', 1);
                 break;
             case KeyEvent.VK_A: case KeyEvent.VK_LEFT:
-                myBoard.movePlayer('y', -1);
+                myBoard.beweegSpeler('y', -1);
                 break;
             case KeyEvent.VK_D: case KeyEvent.VK_RIGHT:
-                myBoard.movePlayer('y', 1);
+                myBoard.beweegSpeler('y', 1);
                 break;
             case KeyEvent.VK_ESCAPE:
                 System.exit(0);
                 break;
             case KeyEvent.VK_R:
-//                myBoard.restartLevel();
+                myBoard.restartLevel();
                 break;
         }
     }

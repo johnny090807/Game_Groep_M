@@ -13,10 +13,9 @@ public class Barricade extends BoardObject {
             case 100:
                 super.setLabel(new JLabel(new ImageIcon("src/assets/barricade.jpg")));
                 break;
-
-
-
-
         }
+    }
+    public int getUnlockValue(){
+        return this.unlockValue;
     }
 }

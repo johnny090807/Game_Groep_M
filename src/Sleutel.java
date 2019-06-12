@@ -15,15 +15,8 @@ public class Sleutel  extends BoardObject {
             case 100:
                 super.setLabel(new JLabel(new ImageIcon("src/assets/redkey.jpg")));
                 break;
-
-
         }
-
-
     }
 
     public int getValue() {return  this.value;}
-
-
-
 }

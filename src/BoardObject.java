@@ -10,10 +10,10 @@ public class BoardObject {
     private Type type;
 
     public enum Type{
-        SPELER,
         BARRICADE,
         MUUR,
-        SLEUTEL
+        SLEUTEL,
+        EINDE
     }
     public BoardObject(int x, int y){
         this.position = new Point(x,y);

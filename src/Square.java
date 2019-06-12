@@ -11,7 +11,6 @@ public class Square {
     private Type type = Type.SQUARE;
 
     private enum Type{
-        ENDZONE,
         SQUARE
     }
 

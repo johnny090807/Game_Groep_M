@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Board extends JPanel {
 
-    private Speler speler = new Speler(0,0);
+    private Level level;
+
+    private Speler speler;
 
     private ArrayList<Muur> muren = new ArrayList<>();
     private ArrayList<Barricade> barricades = new ArrayList<>();
@@ -29,48 +31,42 @@ public class Board extends JPanel {
     }
 
     public void startLevel(int numberLevel){
+        updateHomePanel();
 
-        muren.add(new Muur(0,1));
-        muren.add(new Muur(1,1));
-        muren.add(new Muur(2,1));
-        muren.add(new Muur(3,1));
-        muren.add(new Muur(4,1));
-        muren.add(new Muur(5,1));
-        barricades.add(new Barricade(8,1,100));
-        sleutels.add(new Sleutel(3,5,100));
+        this.level = new Level(numberLevel);
 
+        speler = new Speler(0,0);
 
-        gamePanel = new JPanel(new GridLayout(10,10));
+        gamePanel = new JPanel(new GridLayout(this.level.boardGrootte.width,this.level.boardGrootte.height));
 
         super.add(gamePanel, BorderLayout.CENTER);
         super.add(homePanel, BorderLayout.PAGE_START);
 
-        squares = new Square[10][10];
+        squares = new Square[this.level.boardGrootte.width][this.level.boardGrootte.height];
 
-        for(int x = 0; x < 10; x++){
-            for(int y = 0; y < 10; y++){
+        for(int x = 0; x < this.level.boardGrootte.width; x++){
+            for(int y = 0; y < this.level.boardGrootte.height; y++){
                 squares[x][y] = new Square(x,y);
             }
         }
 
-        for (Muur muur: muren){
-            squares[muur.getPosition().x][muur.getPosition().y].setBoardObject(new Muur(muur.getPosition().x,muur.getPosition().y));
+        for (Muur muur: this.level.muren){
+            squares[muur.getPosition().x][muur.getPosition().y].setBoardObject(new Muur(muur.getPosition().x, muur.getPosition().y));
         }
 
-        for (Barricade barricade: barricades){
-            squares[barricade.getPosition().x][barricade.getPosition().y].setBoardObject(new Barricade(barricade.getPosition().x,barricade.getPosition().y,100));
+        for (Barricade barricade: this.level.barricades){
+            squares[barricade.getPosition().x][barricade.getPosition().y].setBoardObject(new Barricade(barricade.getPosition().x, barricade.getPosition().y, barricade.getUnlockValue()));
         }
 
-        for (Sleutel sleutel: sleutels){
-            squares[sleutel.getPosition().x][sleutel.getPosition().y].setBoardObject(new Sleutel(sleutel.getPosition().x,sleutel.getPosition().y,100));
+        for (Sleutel sleutel: this.level.sleutels){
+            squares[sleutel.getPosition().x][sleutel.getPosition().y].setBoardObject(new Sleutel(sleutel.getPosition().x, sleutel.getPosition().y, sleutel.getValue()));
         }
-
 
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
 
-        this.updateGamePanel();
+        updateGamePanel();
     }
-    public void movePlayer(char direction, int howMuch){
+    public void beweegSpeler(char direction, int howMuch){
         Square vorigeSquare = squares[speler.getPosition().x][speler.getPosition().y];
         Square volgendeSquare = null;
         switch (direction){
@@ -92,30 +88,27 @@ public class Board extends JPanel {
         }
         if(volgendeSquare.hasBoardObject()){
             switch (volgendeSquare.getBoardObject().getType()){
-//                case SPELER:
-//                    volgendeSquare.setBoardObject(speler);
-//                    break;
-
-
                 case BARRICADE:
                     Barricade volgendeSquareBarricade = (Barricade) volgendeSquare.getBoardObject();
                     if (speler.getSleutel() != null && speler.getSleutel().getValue() == volgendeSquareBarricade.unlockValue) {
+                        speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
                         vorigeSquare.setBoardObject(null);
                         volgendeSquare.setBoardObject(speler);
-
                     } else if (speler.getSleutel() != null && speler.getSleutel().getValue() != volgendeSquareBarricade.unlockValue){
-
                         JOptionPane.showMessageDialog(null, "Verkeerd sleutel", "",JOptionPane.INFORMATION_MESSAGE);
                     }
                     break;
                 case SLEUTEL:
                     speler.setSleutel((Sleutel) volgendeSquare.getBoardObject());
+                    speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
                     volgendeSquare.setBoardObject(speler);
                     vorigeSquare.setBoardObject(null);
                     break;
-
+                case EINDE:
+                    restartLevel();
+                    break;
                 case MUUR:
-                    return;
+                    break;
             }
 
         }else{
@@ -127,8 +120,7 @@ public class Board extends JPanel {
     }
 
     public void restartLevel(){
-        speler.setPosition(0,0);
-        updateGamePanel();
+        startLevel(this.level.levelNumber);
     }
 
     public void updateGamePanel(){
