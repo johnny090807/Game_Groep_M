@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class Gui extends JFrame implements KeyListener{
 
-    private Board myBoard = new Board();
+    Board myBoard = new Board();
     Gui(){
         setTitle("Game | Groep M");
         setSize(500,500);
@@ -13,10 +13,11 @@ public class Gui extends JFrame implements KeyListener{
 
         myBoard.updateHomePanel();
 
-        add(myBoard);
-        setVisible(true);
+        super.add(myBoard);
+        super.setVisible(true);
     }
 
+    @Override
     public void keyPressed(KeyEvent e){
         int keyCode = e.getKeyCode();
         switch (keyCode){
@@ -36,14 +37,16 @@ public class Gui extends JFrame implements KeyListener{
                 System.exit(0);
                 break;
             case KeyEvent.VK_R:
-                myBoard.restartLevel();
+//                myBoard.restartLevel();
                 break;
         }
     }
 
+    @Override
     public void keyTyped(KeyEvent e){
 
     }
+    @Override
     public void keyReleased(KeyEvent e){
 
     }
