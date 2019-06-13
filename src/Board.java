@@ -10,8 +10,8 @@ public class Board extends JPanel {
 
     private JPanel
             gamePanel,
-            infoPanel = new JPanel(),
-            homePanel = new JPanel(new GridLayout(1,3));
+            infoPanel = new JPanel(new GridLayout(1,3)),
+            homePanel = new JPanel();
 
     private JLabel
             resetLabel = new JLabel("Reset by pressing (R).", JLabel.CENTER),
@@ -129,7 +129,6 @@ public class Board extends JPanel {
     }
 
     public void restartLevel(){
-        System.out.println(this.level.levelNumber);
         startLevel(this.level.levelNumber);
     }
     public void nextLevel(){

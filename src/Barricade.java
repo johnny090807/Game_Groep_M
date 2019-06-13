@@ -23,7 +23,12 @@ public class Barricade extends BoardObject {
                 super.setLabel(new JLabel(new ImageIcon("src/assets/BarricadeGroen.png")));
                 break;
             default:
-                super.setLabel(new JLabel("ERROR"));
+                JLabel label = new JLabel();
+                label.setIcon(new ImageIcon("src/assets/DefaultBarricade.png"));
+                label.setText("" + unlockValue);
+                label.setHorizontalTextPosition(JLabel.CENTER);
+                label.setVerticalTextPosition(JLabel.CENTER);
+                super.setLabel(label);
                 break;
         }
     }

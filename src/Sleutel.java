@@ -25,7 +25,12 @@ public class Sleutel  extends BoardObject {
                 super.setLabel(new JLabel(new ImageIcon("src/assets/KeyGroen.png")));
                 break;
             default:
-                super.setLabel(new JLabel("ERROR"));
+                JLabel label = new JLabel();
+                label.setIcon(new ImageIcon("src/assets/KeyDefault.png"));
+                label.setText("" + value);
+                label.setHorizontalTextPosition(JLabel.CENTER);
+                label.setVerticalTextPosition(JLabel.CENTER);
+                super.setLabel(label);
                 break;
         }
     }
