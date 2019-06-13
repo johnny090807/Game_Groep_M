@@ -97,7 +97,7 @@ public class Board extends JPanel {
                         vorigeSquare.setBoardObject(null);
                         volgendeSquare.setBoardObject(speler);
                     } else if (speler.getSleutel() != null && speler.getSleutel().getValue() != volgendeSquareBarricade.unlockValue){
-                        this.infoLabel.setText("Dit is de verkeerde sleutel.");
+                        this.infoLabel.setText("Hier heb je sleutel " +  volgendeSquareBarricade.unlockValue + " voor nodig.");
                         updateInfoPanel();
                     }else if(speler.getSleutel() == null){
                         this.infoLabel.setText("Je hebt geen sleutel!");
