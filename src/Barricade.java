@@ -11,7 +11,19 @@ public class Barricade extends BoardObject {
 
         switch (unlockValue){
             case 100:
-                super.setLabel(new JLabel(new ImageIcon("src/assets/barricade.jpg")));
+                super.setLabel(new JLabel(new ImageIcon("src/assets/BarricadeRood.png")));
+                break;
+            case 200:
+                super.setLabel(new JLabel(new ImageIcon("src/assets/BarricadeBlauw.png")));
+                break;
+            case 300:
+                super.setLabel(new JLabel(new ImageIcon("src/assets/BarricadeGeel.png")));
+                break;
+            case 400:
+                super.setLabel(new JLabel(new ImageIcon("src/assets/BarricadeGroen.png")));
+                break;
+            default:
+                super.setLabel(new JLabel("ERROR"));
                 break;
         }
     }

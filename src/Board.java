@@ -8,17 +8,15 @@ public class Board extends JPanel {
 
     private Speler speler;
 
-    private ArrayList<Muur> muren = new ArrayList<>();
-    private ArrayList<Barricade> barricades = new ArrayList<>();
-    private  ArrayList<Sleutel> sleutels = new ArrayList<>();
-
     private JPanel
             gamePanel,
+            infoPanel = new JPanel(),
             homePanel = new JPanel(new GridLayout(1,3));
 
     private JLabel
             resetLabel = new JLabel("Reset by pressing (R).", JLabel.CENTER),
-            quitLabel = new JLabel("Press (ESC) to quit.", JLabel.CENTER);
+            quitLabel = new JLabel("Press (ESC) to quit.", JLabel.CENTER),
+            infoLabel = new JLabel("Probeer tot het groene vlak te komen", JLabel.CENTER);
 
     private Square[][] squares;
 
@@ -32,15 +30,17 @@ public class Board extends JPanel {
 
     public void startLevel(int numberLevel){
         updateHomePanel();
+        updateInfoPanel();
 
         this.level = new Level(numberLevel);
 
-        speler = new Speler(0,0);
+        speler = new Speler(this.level.beginZone.x,this.level.beginZone.y);
 
         gamePanel = new JPanel(new GridLayout(this.level.boardGrootte.width,this.level.boardGrootte.height));
 
         super.add(gamePanel, BorderLayout.CENTER);
         super.add(homePanel, BorderLayout.PAGE_START);
+        super.add(infoPanel, BorderLayout.PAGE_END);
 
         squares = new Square[this.level.boardGrootte.width][this.level.boardGrootte.height];
 
@@ -73,7 +73,7 @@ public class Board extends JPanel {
         Square volgendeSquare = null;
         switch (direction){
             case 'x':
-                if(speler.getPosition().x + howMuch < 0 || speler.getPosition().x + howMuch > 10){
+                if(speler.getPosition().x + howMuch < 0 || speler.getPosition().x + howMuch > 9){
                     return;
                 }else{
                     volgendeSquare = squares[speler.getPosition().x + howMuch][speler.getPosition().y];
@@ -81,7 +81,7 @@ public class Board extends JPanel {
                 }
                 break;
             case 'y':
-                if(speler.getPosition().y + howMuch < 0 || vorigeSquare.getPosition().y + howMuch > 10){
+                if(speler.getPosition().y + howMuch < 0 || vorigeSquare.getPosition().y + howMuch > 9){
                    return;
                 }else {
                     volgendeSquare = squares[speler.getPosition().x][speler.getPosition().y + howMuch];
@@ -97,7 +97,14 @@ public class Board extends JPanel {
                         vorigeSquare.setBoardObject(null);
                         volgendeSquare.setBoardObject(speler);
                     } else if (speler.getSleutel() != null && speler.getSleutel().getValue() != volgendeSquareBarricade.unlockValue){
-                        JOptionPane.showMessageDialog(null, "Verkeerd sleutel", "",JOptionPane.INFORMATION_MESSAGE);
+                        this.infoLabel.setText("Dit is de verkeerde sleutel.");
+                        updateInfoPanel();
+                    }else if(speler.getSleutel() == null){
+                        this.infoLabel.setText("Je hebt geen sleutel!");
+                        updateInfoPanel();
+                    }else{
+                        this.infoLabel.setText("Er is iets fout gegaan!");
+                        updateInfoPanel();
                     }
                     break;
                 case SLEUTEL:
@@ -107,7 +114,7 @@ public class Board extends JPanel {
                     vorigeSquare.setBoardObject(null);
                     break;
                 case EINDE:
-                    restartLevel();
+                    nextLevel();
                     break;
                 case MUUR:
                     break;
@@ -122,12 +129,23 @@ public class Board extends JPanel {
     }
 
     public void restartLevel(){
+        System.out.println(this.level.levelNumber);
         startLevel(this.level.levelNumber);
+    }
+    public void nextLevel(){
+        try{
+            startLevel(this.level.levelNumber + 1);
+        }catch (Exception e){
+            this.infoLabel.setText("Er is geen volgend level!");
+            this.updateInfoPanel();
+            startLevel(this.level.levelNumber - 1);
+
+        }
     }
 
     public void updateGamePanel(){
         gamePanel.removeAll();
-
+        gamePanel.setBackground(new Color(255,255,255));
         for(Square[] squares: squares){
             for(Square square: squares){
                 if(square.hasBoardObject()){
@@ -148,5 +166,14 @@ public class Board extends JPanel {
 
         this.homePanel.revalidate();
         this.homePanel.repaint();
+    }
+
+    public void updateInfoPanel(){
+        this.infoPanel.removeAll();
+
+        this.infoPanel.add(this.infoLabel);
+
+        this.infoPanel.revalidate();
+        this.infoPanel.repaint();
     }
 }
