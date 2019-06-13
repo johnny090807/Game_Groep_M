@@ -29,8 +29,10 @@ public class Level {
                 this.sleutels.add(new Sleutel(0,4, 300));
                 this.sleutels.add(new Sleutel(0,5, 400));
                 this.sleutels.add(new Sleutel(0,6, 500));
+                this.sleutels.add(new Sleutel(8,8, 500));
 //
                 this.muren.add(new Muur(0,1));
+                this.muren.add(new Muur(8,8));
                 this.muren.add(new Muur(1,1));
                 this.muren.add(new Muur(2,1));
                 this.muren.add(new Muur(3,1));
@@ -44,6 +46,7 @@ public class Level {
                 this.barricades.add(new Barricade(4,6,300));
                 this.barricades.add(new Barricade(4,7,400));
                 this.barricades.add(new Barricade(4,8,500));
+                this.barricades.add(new Barricade(8,8,500));
                 break;
             case 2:
                 this.beginZone = new Point(0,0);
@@ -66,6 +69,7 @@ public class Level {
                 this.barricades.add(new Barricade(4,5,200));
                 this.barricades.add(new Barricade(4,6,300));
                 this.barricades.add(new Barricade(4,7,400));
+                this.barricades.add(new Barricade(4,8,600));
                 break;
 
         }
