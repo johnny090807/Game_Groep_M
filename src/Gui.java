@@ -8,7 +8,7 @@ public class Gui extends JFrame implements KeyListener{
     Board myBoard = new Board();
     Gui(){
         setTitle("Game | Groep M");
-        setSize(500,500);
+        setSize(500,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         myBoard.updateHomePanel();
