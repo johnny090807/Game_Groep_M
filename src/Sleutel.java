@@ -1,13 +1,15 @@
 import javax.swing.*;
+import java.lang.reflect.Type;
 
 public class Sleutel  extends BoardObject {
     private  int value;
+    private String type;
 
 
     public Sleutel(int x, int y, int value){
 
         super(x, y);
-        super.setType(Type.SLEUTEL);
+        this.type = "SLEUTEL";
 
         this.value = value;
 
@@ -35,5 +37,14 @@ public class Sleutel  extends BoardObject {
         }
     }
 
-    public int getValue() {return  this.value;}
+    public String getType(){
+        return this.type;
+    }
+
+    public int getValue(){
+        return this.value;
+    }
+
+    public BoardObject getSleutel() { return null; }
+    public void setSleutel (BoardObject sleutel) {}
 }

@@ -1,12 +1,15 @@
 import javax.swing.*;
+import java.lang.reflect.Type;
 
 public class Barricade extends BoardObject {
 
     public int unlockValue;
 
+    private String type;
+
     public Barricade(int x, int y, int unlockValue){
         super(x,y);
-        super.setType(Type.BARRICADE);
+        this.type = "BARRICADE";
         this.unlockValue = unlockValue;
 
         switch (unlockValue){
@@ -32,7 +35,14 @@ public class Barricade extends BoardObject {
                 break;
         }
     }
-    public int getUnlockValue(){
+
+    public String getType(){
+        return this.type;
+    }
+    public int getValue(){
         return this.unlockValue;
     }
+
+    public BoardObject getSleutel() { return null; }
+    public void setSleutel (BoardObject sleutel) {}
 }

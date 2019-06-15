@@ -2,15 +2,26 @@ import javax.swing.*;
 
 public class Speler extends BoardObject{
 
-    private Sleutel sleutel = null;
+    private BoardObject sleutel = null;
+
+    private String type;
 
     public Speler(int x, int y){
         super(x,y);
         super.setLabel(new JLabel(new ImageIcon("src/assets/speler.png")));
+        type = "SPELER";
     }
 
-    public Sleutel getSleutel() { return this.sleutel;}
-    public void setSleutel (Sleutel sleutel) {this.sleutel = sleutel;}
+    public String getType(){
+        return this.type;
+    }
+    public int getValue(){
+        return 0;
+    }
+
+
+    public BoardObject getSleutel() { return this.sleutel;}
+    public void setSleutel (BoardObject sleutel) {this.sleutel = sleutel;}
 
 
 }
