@@ -35,20 +35,20 @@ public class Square {
         return this.position;
     }
 
-    public Type getType(){
-        return this.type;
-    }
+//    public Type getType(){
+//        return this.type;
+//    }
 
     public void setBoardObject(BoardObject boardObject){
         this.boardObject = boardObject;
     }
 
-    public void setLabel(JLabel label){
-        this.label = label;
-    }
-
-    public void setType(Type type){
-        this.type = type;
-    }
+//    public void setLabel(JLabel label){
+//        this.label = label;
+//    }
+//
+//    public void setType(Type type){
+//        this.type = type;
+//    }
 
 }

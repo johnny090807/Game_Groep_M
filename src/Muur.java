@@ -12,7 +12,9 @@ public class Muur extends BoardObject{
         return 0;
     }
     public BoardObject getSleutel() { return null; }
-    public void setSleutel (BoardObject sleutel) {}
+    public void setSleutel (BoardObject sleutel) {
+
+    }
 
     public Muur(int x, int y){
         super(x,y);

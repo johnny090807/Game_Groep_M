@@ -43,6 +43,9 @@ public class Barricade extends BoardObject {
         return this.unlockValue;
     }
 
-    public BoardObject getSleutel() { return null; }
-    public void setSleutel (BoardObject sleutel) {}
+    public BoardObject getSleutel() {
+        return null; }
+    public void setSleutel (BoardObject sleutel) {
+
+    }
 }

@@ -2,18 +2,18 @@ import javax.swing.*;
 import java.lang.reflect.Type;
 
 public class Sleutel  extends BoardObject {
-    private  int value;
+    private int value;
     private String type;
 
 
-    public Sleutel(int x, int y, int value){
+    public Sleutel(int x, int y, int value) {
 
         super(x, y);
         this.type = "SLEUTEL";
 
         this.value = value;
 
-        switch (this.value){
+        switch (this.value) {
             case 100:
                 super.setLabel(new JLabel(new ImageIcon("src/assets/KeyRood.png")));
                 break;
@@ -37,14 +37,22 @@ public class Sleutel  extends BoardObject {
         }
     }
 
-    public String getType(){
+    public String getType() {
         return this.type;
     }
 
-    public int getValue(){
-        return this.value;
+
+    public BoardObject getSleutel() {
+        return null;
     }
 
-    public BoardObject getSleutel() { return null; }
-    public void setSleutel (BoardObject sleutel) {}
+
+    public void setSleutel(BoardObject sleutel) {
+
+    }
+
+    public int getValue() {
+        return this.value;
+    }
 }
+
