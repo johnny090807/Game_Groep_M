@@ -78,21 +78,8 @@ public class Board extends JPanel {
         }
 
         for (BoardObject object: this.level.objecten){
-            switch (object.getType()){
-                case "MUUR":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
-                    break;
-                case "BARRICADE":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
-                    break;
-                case "SLEUTEL":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
-                    break;
-                case "EINDE":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
-                    break;
+            squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
 
-            }
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
 
 
