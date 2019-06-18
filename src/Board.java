@@ -22,11 +22,17 @@ public class Board extends JPanel {
             quitLabel = new JLabel("Press (ESC) to quit.", JLabel.CENTER),
             infoLabel = new JLabel("Probeer tot het groene vlak te komen", JLabel.CENTER);
 
+    private JButton
+            resetButton = new JButton("Reset"),
+            quitButton = new JButton("Exit");
+
 
     private Square[][] squares;
 
 
     public Board(){
+        resetButton.setFocusable(false);
+        quitButton.setFocusable(false);
 
         super.setLayout(new BorderLayout());
 
@@ -35,6 +41,15 @@ public class Board extends JPanel {
 
 
         startLevel(1);
+
+        resetButton.addActionListener(action -> {
+            restartLevel();
+            resetButton.setFocusable(false);
+        });
+        quitButton.addActionListener(action -> {
+            System.exit(0);
+            quitButton.setFocusable(false);
+        });
     }
 
 
@@ -68,16 +83,16 @@ public class Board extends JPanel {
         for (BoardObject object: this.level.objecten){
             switch (object.getType()){
                 case "MUUR":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(new Muur(object.getPosition().x, object.getPosition().y));
+                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
                     break;
                 case "BARRICADE":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(new Barricade(object.getPosition().x, object.getPosition().y, object.getValue()));
+                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
                     break;
                 case "SLEUTEL":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(new Sleutel(object.getPosition().x, object.getPosition().y, object.getValue()));
+                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
                     break;
                 case "EINDE":
-                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(new Einde(object.getPosition().x, object.getPosition().y));
+                    squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
                     break;
 
             }
@@ -220,8 +235,8 @@ public class Board extends JPanel {
         this.homePanel.removeAll();
 
 
-        this.homePanel.add(this.resetLabel);
-        this.homePanel.add(this.quitLabel);
+        this.homePanel.add(this.resetButton);
+        this.homePanel.add(this.quitButton);
 
         this.homePanel.revalidate();
         this.homePanel.repaint();
