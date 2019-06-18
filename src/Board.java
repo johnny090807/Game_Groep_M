@@ -8,7 +8,7 @@ public class Board extends JPanel {
     private Level level;
 
 
-    private BoardObject speler = new Speler(0,0);
+    private Speler speler = new Speler(0,0);
 
 
     private JPanel
@@ -17,10 +17,7 @@ public class Board extends JPanel {
             homePanel = new JPanel();
 
 
-    private JLabel
-            resetLabel = new JLabel("Reset by pressing (R).", JLabel.CENTER),
-            quitLabel = new JLabel("Press (ESC) to quit.", JLabel.CENTER),
-            infoLabel = new JLabel("Probeer tot het groene vlak te komen", JLabel.CENTER);
+    public JLabel infoLabel = new JLabel("Probeer tot het groene vlak te komen", JLabel.CENTER);
 
     private JButton
             resetButton = new JButton("Reset"),
@@ -136,62 +133,9 @@ public class Board extends JPanel {
         }
 
         if(volgendeSquare.hasBoardObject()){
-
-            switch (volgendeSquare.getBoardObject().getType()){
-
-                case "BARRICADE":
-
-                    Barricade volgendeSquareBarricade = (Barricade) volgendeSquare.getBoardObject();
-
-                    if (speler.getSleutel() != null && speler.getSleutel().getValue() == volgendeSquareBarricade.unlockValue) {
-
-                        speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
-
-                        vorigeSquare.setBoardObject(null);
-
-                        volgendeSquare.setBoardObject(speler);
-
-                    } else if (speler.getSleutel() != null && speler.getSleutel().getValue() != volgendeSquareBarricade.unlockValue){
-
-                        this.infoLabel.setText("Hier heb je sleutel " +  volgendeSquareBarricade.unlockValue + " voor nodig.");
-
-                        updateInfoPanel();
-                    }else if(speler.getSleutel() == null){
-
-                        this.infoLabel.setText("Je hebt geen sleutel!");
-
-                        updateInfoPanel();
-                    }else{
-
-                        this.infoLabel.setText("Er is iets fout gegaan!");
-
-                        updateInfoPanel();
-                    }
-                    break;
-
-                case "SLEUTEL":
-                    speler.setSleutel(volgendeSquare.getBoardObject());
-
-                    speler.setSleutel((Sleutel) volgendeSquare.getBoardObject());
-
-                    speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
-
-                    volgendeSquare.setBoardObject(speler);
-
-                    vorigeSquare.setBoardObject(null);
-                    break;
-
-                case "EINDE":
-
-
-                    nextLevel();
-                    break;
-
-                case "MUUR":
-                    break;
+            volgendeSquare.getBoardObject().checkCollision(speler, vorigeSquare, volgendeSquare, this);
             }
-
-        }else{
+        else{
 
             speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
 
@@ -199,6 +143,7 @@ public class Board extends JPanel {
 
             volgendeSquare.setBoardObject(speler);
         }
+        updateInfoPanel();
         updateGamePanel();
     }
 

@@ -12,13 +12,15 @@ public class Speler extends BoardObject{
         type = "SPELER";
     }
 
+    public void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board){
+
+    }
     public String getType(){
         return this.type;
     }
     public int getValue(){
         return 0;
     }
-
 
     public BoardObject getSleutel() { return this.sleutel;}
     public void setSleutel (BoardObject sleutel) {this.sleutel = sleutel;}

@@ -36,6 +36,12 @@ public class Sleutel  extends BoardObject {
                 break;
         }
     }
+    public void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board){
+        speler.setSleutel(this);
+        speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
+        volgendeSquare.setBoardObject(speler);
+        vorigeSquare.setBoardObject(null);
+    }
 
     public String getType() {
         return this.type;

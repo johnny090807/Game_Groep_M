@@ -35,6 +35,33 @@ public class Barricade extends BoardObject {
                 break;
         }
     }
+    public void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board){
+        Barricade volgendeSquareBarricade = (Barricade) volgendeSquare.getBoardObject();
+
+        if (speler.getSleutel() != null && speler.getSleutel().getValue() == volgendeSquareBarricade.unlockValue) {
+
+            speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
+
+            vorigeSquare.setBoardObject(null);
+
+            volgendeSquare.setBoardObject(speler);
+
+        } else if (speler.getSleutel() != null && speler.getSleutel().getValue() != volgendeSquareBarricade.unlockValue){
+
+            board.infoLabel.setText("Hier heb je sleutel " +  volgendeSquareBarricade.unlockValue + " voor nodig.");
+            board.updateInfoPanel();
+
+        }else if(speler.getSleutel() == null){
+
+            board.infoLabel.setText("Je hebt geen sleutel!");
+            board.updateInfoPanel();
+
+        }else{
+
+            board.infoLabel.setText("Er is iets fout gegaan!");
+            board.updateInfoPanel();
+        }
+    }
 
     public String getType(){
         return this.type;

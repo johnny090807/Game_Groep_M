@@ -10,6 +10,9 @@ public class Einde extends BoardObject{
         super.setLabel(new JLabel(new ImageIcon("src/assets/end.png")));
         this.type = "EINDE";
     }
+    public void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board){
+        board.nextLevel();
+    }
     public String getType(){
         return this.type;
     }
