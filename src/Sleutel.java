@@ -3,13 +3,10 @@ import java.lang.reflect.Type;
 
 public class Sleutel  extends BoardObject {
     private int value;
-    private String type;
-
 
     public Sleutel(int x, int y, int value) {
 
         super(x, y);
-        this.type = "SLEUTEL";
 
         this.value = value;
 
@@ -43,20 +40,10 @@ public class Sleutel  extends BoardObject {
         vorigeSquare.setBoardObject(null);
     }
 
-    public String getType() {
-        return this.type;
-    }
-
-
     public BoardObject getSleutel() {
         return null;
     }
-
-
-    public void setSleutel(BoardObject sleutel) {
-
-    }
-
+    public void setSleutel(BoardObject sleutel) {}
     public int getValue() {
         return this.value;
     }

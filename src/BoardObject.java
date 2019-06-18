@@ -8,7 +8,6 @@ public abstract class BoardObject {
 
     private Point position;
 
-    public abstract String getType();
     public abstract BoardObject getSleutel();
     public abstract void setSleutel(BoardObject sleutel);
     public abstract int getValue();

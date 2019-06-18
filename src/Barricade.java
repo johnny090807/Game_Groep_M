@@ -5,11 +5,9 @@ public class Barricade extends BoardObject {
 
     public int unlockValue;
 
-    private String type;
 
     public Barricade(int x, int y, int unlockValue){
         super(x,y);
-        this.type = "BARRICADE";
         this.unlockValue = unlockValue;
 
         switch (unlockValue){
@@ -63,9 +61,6 @@ public class Barricade extends BoardObject {
         }
     }
 
-    public String getType(){
-        return this.type;
-    }
     public int getValue(){
         return this.unlockValue;
     }
