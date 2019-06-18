@@ -79,12 +79,12 @@ public class Board extends JPanel {
 
         for (BoardObject object: this.level.objecten){
             squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
+        }
 
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
 
 
         updateGamePanel();
-    }
     }
 
     public void beweegSpeler(char direction, int howMuch){
