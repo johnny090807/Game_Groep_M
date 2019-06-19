@@ -7,11 +7,6 @@ public class Muur extends BoardObject{
     public int getValue(){
         return 0;
     }
-    public BoardObject getSleutel() { return null; }
-    public void setSleutel (BoardObject sleutel) {
-
-    }
-
     public void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board){
 
     }

@@ -40,10 +40,6 @@ public class Sleutel  extends BoardObject {
         vorigeSquare.setBoardObject(null);
     }
 
-    public BoardObject getSleutel() {
-        return null;
-    }
-    public void setSleutel(BoardObject sleutel) {}
     public int getValue() {
         return this.value;
     }
