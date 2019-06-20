@@ -8,8 +8,6 @@ public abstract class BoardObject {
 
     private Point position;
 
-    public abstract BoardObject getSleutel();
-    public abstract void setSleutel(BoardObject sleutel);
     public abstract int getValue();
     public abstract void checkCollision(Speler speler, Square vorigeSquare, Square volgendeSquare, Board board);
 

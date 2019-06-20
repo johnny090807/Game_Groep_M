@@ -15,6 +15,4 @@ public class Einde extends BoardObject{
     public int getValue(){
         return 0;
     }
-    public BoardObject getSleutel() { return null; }
-    public void setSleutel (BoardObject sleutel) {}
 }

@@ -8,12 +8,6 @@ public class Square {
 
     private Point position;
 
-    private Type type = Type.SQUARE;
-
-    private enum Type{
-        SQUARE
-    }
-
     public Square(int x, int y){
 
         this.position = new Point(x,y);
@@ -35,20 +29,8 @@ public class Square {
         return this.position;
     }
 
-//    public Type getType(){
-//        return this.type;
-//    }
-
     public void setBoardObject(BoardObject boardObject){
         this.boardObject = boardObject;
     }
-
-//    public void setLabel(JLabel label){
-//        this.label = label;
-//    }
-//
-//    public void setType(Type type){
-//        this.type = type;
-//    }
 
 }
