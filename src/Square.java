@@ -8,6 +8,8 @@ public class Square {
 
     private Point position;
 
+
+
     public Square(int x, int y){
 
         this.position = new Point(x,y);
@@ -29,8 +31,10 @@ public class Square {
         return this.position;
     }
 
+
     public void setBoardObject(BoardObject boardObject){
         this.boardObject = boardObject;
     }
+
 
 }
