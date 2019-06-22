@@ -8,7 +8,7 @@ public class Board extends JPanel {
     private Level level;
 
 
-    private Speler speler = new Speler(0,0);
+    public Speler speler = new Speler(0,0);
 
 
     private JPanel
@@ -90,7 +90,6 @@ public class Board extends JPanel {
     public void beweegSpeler(char direction, int howMuch){
 
         Square vorigeSquare = squares[speler.getPosition().x][speler.getPosition().y];
-
 
         Square volgendeSquare = null;
 

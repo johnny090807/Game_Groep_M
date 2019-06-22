@@ -16,6 +16,9 @@ public class Level {
         this.levelNumber = levelNumber;
         this.boardGrootte = new Dimension(10, 10);
         switch (levelNumber) {
+            default:
+                this.beginZone = new Point(0,0);
+                break;
             case 1:
                 this.beginZone = new Point(0, 0);
                 this.objecten.add(new Einde(9, 9));
