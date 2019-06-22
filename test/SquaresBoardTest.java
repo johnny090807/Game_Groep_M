@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 // Gemaakt door: John
 // Deze test kijkt of het speelveld met alle vakjes gemaakt wordt
 
-public class SquaresBoardTest extends JFrame {
+public class SquaresBoardTest {
 
     private Square[][] squares;
 

@@ -27,11 +27,7 @@ public class BorderTest extends JFrame {
         super.setVisible(true);
 
         for (int i = 0; i < 15; i++){
-            if(myBoard.speler.getPosition().y == myBoard.level.boardGrootte.width){
                 myBoard.beweegSpeler('x',1);
-            }else{
-                myBoard.beweegSpeler('y', 1);
-            }
             Thread.sleep(1000);
         }
 
