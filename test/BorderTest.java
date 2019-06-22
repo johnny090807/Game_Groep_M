@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import static org.junit.Assert.assertEquals;
 
+// Gemaakt door: John
+// Hier test ik dat de speler niet van het veld af mag lopen.
+
 public class BorderTest extends JFrame {
     Board myBoard = new Board();
     @Test
@@ -24,7 +27,11 @@ public class BorderTest extends JFrame {
         super.setVisible(true);
 
         for (int i = 0; i < 15; i++){
-            myBoard.beweegSpeler('y', 1);
+            if(myBoard.speler.getPosition().y == myBoard.level.boardGrootte.width){
+                myBoard.beweegSpeler('x',1);
+            }else{
+                myBoard.beweegSpeler('y', 1);
+            }
             Thread.sleep(1000);
         }
 

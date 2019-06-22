@@ -5,7 +5,7 @@ import java.awt.*;
 public class Board extends JPanel {
 
 
-    private Level level;
+    public Level level;
 
 
     public Speler speler = new Speler(0,0);
