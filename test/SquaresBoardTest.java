@@ -1,10 +1,5 @@
 import org.junit.Test;
 
-import javax.swing.*;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import static org.junit.Assert.*;
 
 // Gemaakt door: John
