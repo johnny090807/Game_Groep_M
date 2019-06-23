@@ -1,11 +1,12 @@
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-//Mhamed Arkoubi
+
 
 public class BoardObjectTest {
+//Mhamed Arkoubi
+//       Unit teste  requirement:  6)De Sleutels liggen op de vakjes van het speelveld.
 
-    //    test positie en value  van de sleutels
     @Test
 
     public void getPositionX() {
