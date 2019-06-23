@@ -5,10 +5,10 @@ import java.awt.*;
 public class Board extends JPanel {
 
 
-    private Level level;
+    public Level level;
 
 
-    private Speler speler = new Speler(0,0);
+    public Speler speler = new Speler(0,0);
 
 
     private JPanel
@@ -33,9 +33,7 @@ public class Board extends JPanel {
 
         super.setLayout(new BorderLayout());
 
-
         this.homePanel.setPreferredSize(new Dimension(500, 55));
-
 
         startLevel(1);
 
@@ -54,7 +52,6 @@ public class Board extends JPanel {
 
         this.updateHomePanel();
 
-
         this.updateInfoPanel();
 
         this.level = new Level(numberLevel);
@@ -67,9 +64,7 @@ public class Board extends JPanel {
         super.add(homePanel, BorderLayout.PAGE_START);
         super.add(infoPanel, BorderLayout.PAGE_END);
 
-
         squares = new Square[this.level.boardGrootte.width][this.level.boardGrootte.height];
-
 
         for(int x = 0; x < this.level.boardGrootte.width; x++){
             for(int y = 0; y < this.level.boardGrootte.height; y++){
@@ -80,9 +75,7 @@ public class Board extends JPanel {
         for (BoardObject object: this.level.objecten){
             squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
         }
-
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
-
 
         updateGamePanel();
     }
@@ -91,29 +84,23 @@ public class Board extends JPanel {
 
         Square vorigeSquare = squares[speler.getPosition().x][speler.getPosition().y];
 
-
         Square volgendeSquare = null;
 
 
         switch (direction){
 
             case 'x':
-
                 if(speler.getPosition().x + howMuch < 0 || speler.getPosition().x + howMuch > this.level.boardGrootte.width -1){
                     return;
                 }else{
-
                     volgendeSquare = squares[speler.getPosition().x + howMuch][speler.getPosition().y];
-
                 }
                 break;
 
             case 'y':
-
                 if(speler.getPosition().y + howMuch < 0 || vorigeSquare.getPosition().y + howMuch > this.level.boardGrootte.height -1){
                    return;
                 }else {
-
                     volgendeSquare = squares[speler.getPosition().x][speler.getPosition().y + howMuch];
                 }
                 break;
@@ -121,14 +108,9 @@ public class Board extends JPanel {
 
         if(volgendeSquare.hasBoardObject()){
             volgendeSquare.getBoardObject().checkCollision(speler, vorigeSquare, volgendeSquare, this);
-
-            }
-        else{
-
+        }else{
             speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
-
             vorigeSquare.setBoardObject(null);
-
             volgendeSquare.setBoardObject(speler);
         }
         updateInfoPanel();
@@ -138,6 +120,7 @@ public class Board extends JPanel {
     public void restartLevel(){
         startLevel(this.level.levelNumber);
     }
+
     public void nextLevel(){
         try{
             startLevel(this.level.levelNumber + 1);
@@ -145,7 +128,6 @@ public class Board extends JPanel {
             this.infoLabel.setText("Er is geen volgend level!");
             this.updateInfoPanel();
             startLevel(this.level.levelNumber - 1);
-
         }
     }
 
@@ -166,7 +148,6 @@ public class Board extends JPanel {
     }
     public void updateHomePanel(){
         this.homePanel.removeAll();
-
 
         this.homePanel.add(this.resetButton);
         this.homePanel.add(this.quitButton);
