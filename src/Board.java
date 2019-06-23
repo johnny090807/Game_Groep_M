@@ -8,8 +8,7 @@ import java.awt.*;
 public class Board extends JPanel {
 
     // Variabele van het level
-    private Level level;
-
+    public Level level;
 
     public Speler speler = new Speler(0,0);
 
@@ -37,6 +36,7 @@ public class Board extends JPanel {
         // Zet de layout van het overgeerfte paneel in een BorderLayout
         super.setLayout(new BorderLayout());
 
+
         // Zet de grootte vast van het home paneel
         this.homePanel.setPreferredSize(new Dimension(500, 55));
 
@@ -58,7 +58,6 @@ public class Board extends JPanel {
 // Update het home paneel
         this.updateHomePanel();
 
-
         this.updateInfoPanel();
         // Stel het level vast voor deze klasse
         this.level = new Level(numberLevel);
@@ -71,10 +70,9 @@ public class Board extends JPanel {
         super.add(homePanel, BorderLayout.PAGE_START);
         super.add(infoPanel, BorderLayout.PAGE_END);
 
-
         squares = new Square[this.level.boardGrootte.width][this.level.boardGrootte.height];
-        // Vul het speelveld met vierkanten
 
+        // Vul het speelveld met vierkanten
         for(int x = 0; x < this.level.boardGrootte.width; x++){
             for(int y = 0; y < this.level.boardGrootte.height; y++){
                 squares[x][y] = new Square(x,y);
@@ -84,8 +82,8 @@ public class Board extends JPanel {
         for (BoardObject object: this.level.objecten){
             squares[object.getPosition().x][object.getPosition().y].setBoardObject(object);
         }
-
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
+
 
 // Update het game paneel
         updateGamePanel();
@@ -101,22 +99,25 @@ public class Board extends JPanel {
         switch (direction){
 
             case 'x':
+
                 // Als de spelers positie lager dan 0 is en groter dan 9 dan gebeurt er niks
                 if(speler.getPosition().x + howMuch < 0 || speler.getPosition().x + howMuch > this.level.boardGrootte.width -1){
                     return;
                 }else{
                     // Anders dan wordt de volgendeSquare de plek waar de speler zich dan eindigt
-                    volgendeSquare = squares[speler.getPosition().x + howMuch][speler.getPosition().y];
 
+                    volgendeSquare = squares[speler.getPosition().x + howMuch][speler.getPosition().y];
                 }
                 break;
             // Is dit het Y Coordinaat dan gebeurt dit
             case 'y':
+
 // Als de spelers positie lager dan 0 is en groter dan 9 dan gebeurt er niks
                 if(speler.getPosition().y + howMuch < 0 || vorigeSquare.getPosition().y + howMuch > this.level.boardGrootte.height -1){
                    return;
                 }else {
 // Anders dan wordt de volgendeSquare de plek waar de speler zich dan eindigt
+
                     volgendeSquare = squares[speler.getPosition().x][speler.getPosition().y + howMuch];
                 }
                 break;
@@ -126,9 +127,7 @@ public class Board extends JPanel {
         if(volgendeSquare.hasBoardObject()){
 
             volgendeSquare.getBoardObject().checkCollision(speler, vorigeSquare, volgendeSquare, this);
-            }
-        else{
-
+        }else{
             speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
             // Maak de vorige square null
             vorigeSquare.setBoardObject(null);
@@ -138,7 +137,6 @@ public class Board extends JPanel {
         updateInfoPanel();
         updateGamePanel();
     }
-
     public void restartLevel(){
         startLevel(this.level.levelNumber);
     }
@@ -149,7 +147,6 @@ public class Board extends JPanel {
             this.infoLabel.setText("Er is geen volgend level!");
             this.updateInfoPanel();
             startLevel(this.level.levelNumber - 1);
-
         }
     }
 
@@ -170,7 +167,6 @@ public class Board extends JPanel {
     }
     public void updateHomePanel(){
         this.homePanel.removeAll();
-
 
         this.homePanel.add(this.resetButton);
         this.homePanel.add(this.quitButton);
