@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import static org.junit.Assert.assertEquals;
 
+// Gemaakt door: John
+// Deze test kijkt of de speler van het veld af kan lopen.
+
 public class BorderTest extends JFrame {
     Board myBoard = new Board();
     @Test
