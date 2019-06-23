@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
-//Mhamed Arkoubi
-//       Unit teste  requirement:  2) De speler staat steeds op één van die vakjes en kan naar aanliggende vakjes bewegen.
-public class BoardTest extends JFrame  {
+        //  Mhamed Arkoubi
+        //  Unit test requirement:  2) De speler staat steeds op één van die vakjes en kan naar aanliggende vakjes bewegen.
+public class TestBeweegSpeler extends JFrame  {
     Board myBoard = new Board();
 
 

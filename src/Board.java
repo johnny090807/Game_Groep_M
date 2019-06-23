@@ -40,7 +40,7 @@ public class Board extends JPanel {
         // Zet de grootte vast van het home paneel
         this.homePanel.setPreferredSize(new Dimension(500, 55));
 
-// Start het level met de daarop aangewezen level
+        // Start het level met de daarop aangewezen level
         startLevel(1);
 
         resetButton.addActionListener(action -> {
@@ -55,7 +55,7 @@ public class Board extends JPanel {
 
     // operatie startLevel; verwacht een nummer voor welk level die moet starten
     public void startLevel(int numberLevel){
-// Update het home paneel
+        // Update het home paneel
         this.updateHomePanel();
 
         this.updateInfoPanel();
@@ -85,12 +85,12 @@ public class Board extends JPanel {
         squares[speler.getPosition().x][speler.getPosition().y].setBoardObject(speler);
 
 
-// Update het game paneel
+        // Update het game paneel
         updateGamePanel();
     }
     // operatie beweegSpeler; verwacht een char voor de directie en een int voor hoeveel diegene zou moeten bewegen
     public void beweegSpeler(char direction, int howMuch){
-// Stel het vorige vierkant vast
+        // Stel het vorige vierkant vast
         Square vorigeSquare = squares[speler.getPosition().x][speler.getPosition().y];
         // Initializeer de volgende vierkant
         Square volgendeSquare = null;
@@ -105,19 +105,17 @@ public class Board extends JPanel {
                     return;
                 }else{
                     // Anders dan wordt de volgendeSquare de plek waar de speler zich dan eindigt
-
                     volgendeSquare = squares[speler.getPosition().x + howMuch][speler.getPosition().y];
                 }
                 break;
             // Is dit het Y Coordinaat dan gebeurt dit
             case 'y':
 
-// Als de spelers positie lager dan 0 is en groter dan 9 dan gebeurt er niks
+                // Als de spelers positie lager dan 0 is en groter dan 9 dan gebeurt er niks
                 if(speler.getPosition().y + howMuch < 0 || vorigeSquare.getPosition().y + howMuch > this.level.boardGrootte.height -1){
                    return;
                 }else {
-// Anders dan wordt de volgendeSquare de plek waar de speler zich dan eindigt
-
+                    // Anders dan wordt de volgendeSquare de plek waar de speler zich dan eindigt
                     volgendeSquare = squares[speler.getPosition().x][speler.getPosition().y + howMuch];
                 }
                 break;
@@ -125,13 +123,14 @@ public class Board extends JPanel {
         }
 
         if(volgendeSquare.hasBoardObject()){
-
+            // Check de botsing die gemaakt wordt met het boardObject
             volgendeSquare.getBoardObject().checkCollision(speler, vorigeSquare, volgendeSquare, this);
         }else{
+            // Zet de positie van de speler
             speler.setPosition(volgendeSquare.getPosition().x,volgendeSquare.getPosition().y);
             // Maak de vorige square null
             vorigeSquare.setBoardObject(null);
-// Zet de speler op de volgende square
+            // Zet de speler op de volgende square
             volgendeSquare.setBoardObject(speler);
         }
         updateInfoPanel();
@@ -151,8 +150,11 @@ public class Board extends JPanel {
     }
 
     public void updateGamePanel(){
+        // Verwijder alles van het gamepaneel
         gamePanel.removeAll();
+        // Zet de achtergrond kleur van het gamepaneel
         gamePanel.setBackground(new Color(255,255,255));
+        // voor elke square van het veld, kijk of er een board object op staat.
         for(Square[] squares: squares){
             for(Square square: squares){
                 if(square.hasBoardObject()){

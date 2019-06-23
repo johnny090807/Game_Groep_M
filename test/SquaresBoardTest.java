@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-// Gemaakt door: John
+// Gemaakt door: John Klees
 // Deze test kijkt of het speelveld met alle vakjes gemaakt wordt
 
 public class SquaresBoardTest {
@@ -10,7 +10,7 @@ public class SquaresBoardTest {
     private Square[][] squares;
 
     @Test
-    public void startLevel() {
+    public void testBoardSquares() {
         squares = new Square[10][10];
 
         for (int x = 0; x < 10; x++){

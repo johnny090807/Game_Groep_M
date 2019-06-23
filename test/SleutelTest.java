@@ -3,9 +3,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class BoardObjectTest {
-//Mhamed Arkoubi
-//       Unit teste  requirement:  6)De Sleutels liggen op de vakjes van het speelveld.
+public class SleutelTest {
+        //  Mhamed Arkoubi
+        //  Unit test requirement:  6)De Sleutels liggen op de vakjes van het speelveld.
 
     @Test
 

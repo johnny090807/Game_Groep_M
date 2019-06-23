@@ -4,15 +4,16 @@ import javax.swing.*;
 
 import static org.junit.Assert.assertEquals;
 
-// Gemaakt door: John
+// Gemaakt door: John Klees
 // Deze test kijkt of de speler van het veld af kan lopen.
 
 public class BorderTest extends JFrame {
     Board myBoard = new Board();
     @Test
     public void BorderTestY() throws Exception {
-        myBoard.startLevel(0);
         Thread.sleep(1000);
+
+        myBoard.startLevel(0);
 
         setTitle("Game | Collision Test");
 

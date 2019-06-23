@@ -18,6 +18,7 @@ public class Level {
         switch (levelNumber) {
             default:
                 this.beginZone = new Point(0,0);
+                this.objecten.add(new Einde(9,9));
                 break;
             case 1:
                 this.beginZone = new Point(0, 0);
@@ -143,12 +144,6 @@ public class Level {
                 this.objecten.add(new Barricade(7, 3, 300));
 
                 break;
-
-            case 3:
-
-
-
-
         }
 
 
