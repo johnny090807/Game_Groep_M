@@ -121,6 +121,7 @@ public class Board extends JPanel {
 
         if(volgendeSquare.hasBoardObject()){
             volgendeSquare.getBoardObject().checkCollision(speler, vorigeSquare, volgendeSquare, this);
+
             }
         else{
 
